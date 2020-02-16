@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    container_name: docker-node-mongo
+    restart: always
+    build: .
+    ports:
+      - '9000:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+  
+  mongo-express:
+    container_name: mongo-express
+    ports:
+      - '8081:8081'
+    restart: always
+    image: mongo-express
